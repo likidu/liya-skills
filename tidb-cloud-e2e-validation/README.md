@@ -1,14 +1,16 @@
 # TiDB Cloud E2E Validation Skill
 
-End-to-end feature validation for TiDB Cloud console UI, combining functional testing with consistent UX review.
+End-to-end feature validation for TiDB Cloud console UI, simulating real user behavior with consistent UX review.
 
 ## Purpose
 
-This skill validates TiDB Cloud features by:
-1. **Verifying functionality** - Confirming features actually work (not just UI feedback)
+This skill validates TiDB Cloud features by simulating how real users interact with the console:
+1. **Walking through features** - Operating the UI exactly as a user would
 2. **Applying UX rubric** - Consistent evaluation across all features using two personas:
    - **Happy Path**: New user with minimal context
    - **Power User**: Experienced user seeking efficiency
+
+All validation is performed through the UI only—no API calls or backend verification.
 
 ## Directory Structure
 
@@ -21,11 +23,6 @@ tidb-cloud-e2e-validation/
 │   ├── navigation-patterns.md         # Common UI navigation patterns
 │   ├── ticdc-validation.md            # TiCDC-specific validation (TODO)
 │   └── backup-restore.md              # Backup/restore validation (TODO)
-├── scripts/
-│   ├── verify_cluster_status.py       # Verify cluster state via API (TODO)
-│   ├── verify_ticdc_running.py        # Verify TiCDC changefeed (TODO)
-│   ├── test_data_sync.py              # Test data synchronization (TODO)
-│   └── capture_evidence.py            # Screenshot capture (TODO)
 └── assets/
     ├── report-template.md             # Validation report template
     └── checklist-template.md          # Quick validation checklist
@@ -57,11 +54,10 @@ tidb-cloud-e2e-validation/
 2. Follow the structure in existing references:
    - Feature overview
    - Step-by-step validation for each persona
-   - Functional verification steps
+   - UI state verification steps
    - Error scenarios to test
    - UX focus areas
-3. Add any verification scripts to `scripts/`
-4. Update the feature table in `SKILL.md`
+3. Update the feature table in `SKILL.md`
 
 ## UX Review Rubric
 
@@ -83,16 +79,3 @@ Validations produce:
 - UX scores for each persona
 - Documented issues with screenshots
 - Actionable recommendations
-
-## TODO
-
-### Verification Scripts
-
-Scripts in `scripts/` directory for backend verification:
-
-| Script | Purpose |
-|--------|---------|
-| `verify_ticdc_running.py` | Confirm changefeed is active via API |
-| `test_data_sync.py` | Test actual data synchronization |
-| `capture_evidence.py` | Automated screenshot capture |
-| `generate_report.py` | Generate formatted validation report |

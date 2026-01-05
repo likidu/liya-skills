@@ -83,33 +83,23 @@ Cluster management includes:
 
 ---
 
-## Functional Verification
+## UI State Verification
 
-### Backend State Checks
+After cluster creation, verify through the UI:
 
-After cluster creation, verify:
-
-1. **Cluster Exists**
+1. **Cluster Visible**
    - Cluster appears in cluster list
-   - Cluster ID is generated
-   - API returns cluster details
+   - Cluster name matches what was entered
 
 2. **Status Progression**
    - Status shows "Creating" initially
    - Status updates to "Available" when ready
-   - Status matches actual cluster state
+   - Progress indicator visible during creation
 
-3. **Resource Allocation**
-   - Selected tier matches created cluster
-   - Region is correct
-   - Node configuration matches selection
-
-### Verification Script Usage
-
-```bash
-# Check cluster status via API (if credentials available)
-# This would be implemented in scripts/verify_cluster_status.py
-```
+3. **Details Match Configuration**
+   - Selected tier displayed correctly
+   - Region shown matches selection
+   - Cluster details page accessible
 
 ---
 

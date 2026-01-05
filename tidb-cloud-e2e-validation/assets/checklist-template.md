@@ -32,7 +32,6 @@
 - [ ] Primary workflow completes successfully
 - [ ] Expected result achieved
 - [ ] UI reflects correct state after completion
-- [ ] Backend state matches UI
 
 ### Error Handling
 - [ ] Invalid input shows clear error
@@ -107,17 +106,6 @@ Rate each 1-5 (1=Poor, 3=Acceptable, 5=Excellent)
 - [ ] Success state
 - [ ] Error state
 - [ ] Key issue screenshots
-
----
-
-## Backend Verification
-
-- [ ] API confirms expected state
-- [ ] Data/resources created correctly
-- [ ] Status matches reality
-- [ ] No orphaned resources
-
-Verification method used: _______________
 
 ---
 

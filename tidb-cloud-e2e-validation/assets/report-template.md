@@ -29,13 +29,13 @@
 | [Test 2] | PASS/FAIL | |
 | [Test 3] | PASS/FAIL | |
 
-### Backend Verification
+### UI State Verification
 
-| Check | Result | Evidence |
-|-------|--------|----------|
-| [Backend state matches UI] | PASS/FAIL | |
-| [Data/resource created correctly] | PASS/FAIL | |
-| [Status indicators accurate] | PASS/FAIL | |
+| Check | Result | Notes |
+|-------|--------|-------|
+| Success message displayed | PASS/FAIL | |
+| Resource appears in list/view | PASS/FAIL | |
+| Status indicator shows expected value | PASS/FAIL | |
 
 ---
 
@@ -140,9 +140,6 @@
 
 ### Full Test Log
 [Detailed step-by-step log if needed]
-
-### API Verification Output
-[Raw output from verification scripts if used]
 
 ---
 

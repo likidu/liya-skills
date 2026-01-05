@@ -5,9 +5,8 @@ description: >
   (1) Validating new or existing console features work correctly,
   (2) Testing UI workflows from end-user perspectives (new user or power user),
   (3) Applying consistent UX review rubric across features,
-  (4) [Optional] Verifying backend functionality through the console (e.g., cluster actually created, TiCDC running),
-  (5) Creating validation reports for feature releases.
-  This skill uses Claude Code's Chrome integration to interact with tidbcloud.com as a real user would.
+  (4) Creating validation reports for feature releases.
+  This skill simulates a real user operating the TiDB Cloud console through Chrome.
 compatibility: Designed for Claude Code (or similar products)
 ---
 
@@ -15,9 +14,11 @@ compatibility: Designed for Claude Code (or similar products)
 
 ## Overview
 
-This skill validates TiDB Cloud features through two complementary approaches:
-1. **Functional Validation**: Verify the feature actually works end-to-end
+This skill validates TiDB Cloud features by simulating real user behavior through the console UI. It focuses on:
+1. **Functional Validation**: Walk through features end-to-end as a real user would
 2. **UX Review**: Evaluate the experience using a consistent rubric from different user perspectives
+
+All validation is performed through the UI only—no API calls or backend verification. This ensures we test exactly what users experience.
 
 ## Prerequisites
 
@@ -64,13 +65,13 @@ All validations should be performed from one or both of these perspectives:
 4. Determine which persona(s) to use for this validation
 
 ### Phase 2: Functional Validation
-1. Execute the feature workflow end-to-end
-2. Verify the action actually completed (not just UI feedback):
-   - Check backend state via API or console
-   - Verify data/resource changes are real
-   - Confirm status indicators match reality
-3. Test error scenarios and edge cases
-4. Run verification scripts if available (see `scripts/` directory)
+1. Execute the feature workflow end-to-end as a real user would
+2. Observe UI feedback and confirm expected outcomes:
+   - Success messages appear as expected
+   - UI state updates correctly (e.g., new resource appears in list)
+   - Status indicators show expected values
+3. Test error scenarios by triggering validation errors or edge cases
+4. Note any unexpected behavior or confusing UI states
 
 ### Phase 3: UX Review
 Apply the UX Review Rubric below to score the experience.
@@ -183,8 +184,8 @@ Assistant: I'll validate cluster creation from the Happy Path persona perspectiv
 User: Test TiCDC changefeed creation as a power user
 Assistant: I'll validate TiCDC from the Power User persona perspective...
 [Loads references/ticdc-validation.md]
-[Tests efficient paths, keyboard shortcuts, advanced options]
-[Verifies changefeed is actually running]
+[Tests efficient paths, advanced options]
+[Confirms UI shows changefeed status as expected]
 [Generates report with efficiency focus]
 ```
 
