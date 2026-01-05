@@ -85,19 +85,13 @@ python generate_sample_data.py --mode full --dry-run
 Generate continuous database operations to test CDC changefeeds:
 
 ```bash
-# Continuous mode - generate events at 10 events/second (default)
+# Continuous mode - generate events infinitely at 10 events/second (default)
 python cdc_event_generator.py --mode continuous --rate 10
 
 # Continuous mode - custom rate for 5 minutes
 python cdc_event_generator.py --mode continuous --rate 50 --duration 300
 
-# Continuous mode - infinite duration (Ctrl+C to stop)
-python cdc_event_generator.py --mode continuous --rate 20
-
-# Burst mode - generate 1000 events as fast as possible
-python cdc_event_generator.py --mode burst --count 1000
-
-# Burst mode - generate 10000 events
+# Burst mode - generate 10000 events as fast as possible
 python cdc_event_generator.py --mode burst --count 10000
 ```
 

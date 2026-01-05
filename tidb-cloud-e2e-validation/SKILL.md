@@ -162,7 +162,7 @@ Load the appropriate reference file for detailed validation steps:
 | Feature | Reference File |
 |---------|----------------|
 | Cluster Creation/Management | `references/cluster-management.md` |
-| TiCDC / Changefeeds | `references/ticdc-validation.md` |
+| TiCDC / Changefeeds | `references/ticdc-setup.md` |
 | Common Navigation | `references/navigation-patterns.md` |
 
 ---
@@ -183,7 +183,7 @@ Assistant: I'll validate cluster creation from the Happy Path persona perspectiv
 ```
 User: Test TiCDC changefeed creation as a power user
 Assistant: I'll validate TiCDC from the Power User persona perspective...
-[Loads references/ticdc-validation.md]
+[Loads references/ticdc-setup.md]
 [Tests efficient paths, advanced options]
 [Confirms UI shows changefeed status as expected]
 [Generates report with efficiency focus]
