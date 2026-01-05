@@ -24,8 +24,13 @@ All validation is performed through the UI only—no API calls or backend verifi
 
 - Claude Code with Chrome integration enabled (`claude --chrome`)
 - Chrome browser with Claude in Chrome extension installed
-- Access to target environment (staging.tidbcloud.com or tidbcloud.com)
-- User authentication (will pause for manual login if needed)
+
+### Environment Setup
+
+1. Navigate to staging environment: `https://staging.tidbcloud.com/enterprise/signin/company111`
+2. Sign in using Google with your company email
+3. Select organization: **TiDB Cloud PM**
+4. Select project: **liya-test**
 
 ---
 
@@ -60,7 +65,7 @@ All validations should be performed from one or both of these perspectives:
 2. If login required, pause and request user to authenticate
 3. Identify the feature to validate and load the appropriate reference file:
    - **Cluster Management**: `references/cluster-management.md`
-   - **TiCDC/Changefeeds**: `references/ticdc-validation.md`
+   - **TiCDC/Changefeeds**: `references/ticdc-setup.md`
    - **Navigation Patterns**: `references/navigation-patterns.md`
 4. Determine which persona(s) to use for this validation
 
