@@ -53,25 +53,76 @@ All validations should be performed from one or both of these perspectives:
 
 ---
 
+## Environment Selection
+
+**Before starting any validation, always ask the user to select the target environment.**
+
+Use the following options:
+1. **Staging** - staging.tidbcloud.com (Recommended for testing)
+2. **Production** - tidbcloud.com
+3. **Custom** - Allow user to enter a custom URL
+
+Example prompt to use:
+- Question: "Which target environment should I use for this validation?"
+- Options:
+  - Staging (staging.tidbcloud.com) - Recommended for testing
+  - Production (tidbcloud.com)
+  - Custom URL (let me specify by typing the custom URL)
+
+If the user selects "Custom URL", ask them to provide the full base URL.
+
+---
+
 ## Core Validation Workflow
 
 ### Phase 1: Setup & Context
-1. Open Chrome and navigate to the target environment
-2. If login required, pause and request user to authenticate
-3. Identify the feature to validate and load the appropriate reference file:
-   - **Cluster Management**: `references/cluster-management.md`
-   - **TiCDC/Changefeeds**: `references/ticdc-validation.md`
-   - **Navigation Patterns**: `references/navigation-patterns.md`
-4. Determine which persona(s) to use for this validation
+1. **Ask user to select target environment** (see Environment Selection above)
+2. Open Chrome and navigate to the selected environment URL
+3. If login required, pause and request user to authenticate
+4. Identify the feature to validate (e.g., "Create a cluster", "Manage a project", "Create a TiCDC job")
+5. Optionally load a reference file for domain context (terminology, key concepts) - these are NOT step-by-step instructions
+6. Determine which persona(s) to use for this validation
 
-### Phase 2: Functional Validation
-1. Execute the feature workflow end-to-end as a real user would
+### Phase 2: Functional Validation (Exploratory)
+1. **Discover the workflow through the UI** - explore as a real user would, without pre-defined steps
 2. Observe UI feedback and confirm expected outcomes:
    - Success messages appear as expected
    - UI state updates correctly (e.g., new resource appears in list)
    - Status indicators show expected values
 3. Test error scenarios by triggering validation errors or edge cases
 4. Note any unexpected behavior or confusing UI states
+
+### Phase 2.5: Visual & Layout Checks
+**IMPORTANT**: Always perform these visual checks during validation. See `references/ui-visual-checklist.md` for the full checklist.
+
+1. **Element Overlapping**
+   - Check floating elements (help icons, FABs) don't overlap buttons or content
+   - Verify sticky/fixed elements don't cover interactive elements when scrolling
+   - Test at different viewport sizes if possible
+
+2. **Alignment & Spacing**
+   - Check that similar elements (cards, list items) are consistently aligned
+   - Verify text baselines align across columns
+   - Look for uneven spacing or misaligned elements
+
+3. **Interaction States**
+   - Test hover states on all interactive elements
+   - Test selected + hover combination (shouldn't create overly thick borders)
+   - Verify disabled states have correct styling (proper color contrast)
+
+4. **Cross-Page Consistency**
+   - Compare colors/styling with related pages (e.g., creation page vs list page)
+   - Check that the same data is displayed consistently across views
+   - Verify dropdown menus have consistent options for similar items
+
+5. **Empty & Edge States**
+   - Check empty tables don't show pagination
+   - Verify loading states are present
+   - Test with long text/names for truncation handling
+
+6. **Platform-Specific Issues**
+   - Note any scroll bar issues (especially on Windows)
+   - Check for font rendering differences
 
 ### Phase 3: UX Review
 Apply the UX Review Rubric below to score the experience.
@@ -155,15 +206,20 @@ Use templates from `assets/` for validation output:
 
 ---
 
-## Feature-Specific References
+## Feature-Specific References (Optional)
 
-Load the appropriate reference file for detailed validation steps:
+Reference files provide **domain context** (terminology, key concepts, what to look for) - NOT step-by-step instructions. The validation is exploratory; Claude discovers the workflow through the UI.
 
-| Feature | Reference File |
-|---------|----------------|
-| Cluster Creation/Management | `references/cluster-management.md` |
-| TiCDC / Changefeeds | `references/ticdc-setup.md` |
-| Common Navigation | `references/navigation-patterns.md` |
+| Feature | Reference File | Purpose |
+|---------|----------------|---------|
+| Cluster Management | `references/cluster-management.md` | Cluster concepts, terminology, list/creation checks |
+| Project Management | `references/project-management.md` | Project/org structure, roles |
+| Navigation Patterns | `references/navigation-patterns.md` | Common UI patterns |
+| **UI Visual Checklist** | `references/ui-visual-checklist.md` | **Common visual/layout issues to check** |
+
+**No reference file?** That's fine - proceed with exploratory validation based on the user's description of the feature.
+
+**Always load `ui-visual-checklist.md`** - This contains common visual issues that should be checked regardless of the feature being validated.
 
 ---
 
@@ -179,17 +235,7 @@ Assistant: I'll validate cluster creation from the Happy Path persona perspectiv
 [Generates report]
 ```
 
-### Example 2: Validate TiCDC Setup (Power User)
-```
-User: Test TiCDC changefeed creation as a power user
-Assistant: I'll validate TiCDC from the Power User persona perspective...
-[Loads references/ticdc-setup.md]
-[Tests efficient paths, advanced options]
-[Confirms UI shows changefeed status as expected]
-[Generates report with efficiency focus]
-```
-
-### Example 3: Full Feature Validation
+### Example 2: Full Feature Validation
 ```
 User: Do a complete validation of backup/restore
 Assistant: I'll perform full validation with both personas...

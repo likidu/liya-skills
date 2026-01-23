@@ -76,6 +76,33 @@ Rate each 1-5 (1=Poor, 3=Acceptable, 5=Excellent)
 
 ---
 
+## Visual & Layout Checks (IMPORTANT)
+
+### Element Overlapping
+- [ ] **Floating help icons** don't overlap action buttons
+- [ ] **Sticky/fixed elements** don't cover content when scrolling
+- [ ] **Tooltips** don't get cut off at viewport edges
+
+### Interaction States
+- [ ] **Selected + hover** doesn't create overly thick borders
+- [ ] **Disabled states** have correct color (typically carbon6/lighter)
+- [ ] **Hover states** visible on all interactive elements
+
+### Cross-Page Consistency
+- [ ] **Colors match** between related pages (e.g., creation vs list page)
+- [ ] **Dropdown menus** have consistent options for similar items
+- [ ] **Terminology** is consistent across pages
+
+### Empty & Edge States
+- [ ] **Empty tables** don't show pagination
+- [ ] **Long text/names** truncate properly without breaking layout
+
+### Platform Issues
+- [ ] **No double scroll bars** (especially check on Windows)
+- [ ] **Scroll behavior** works correctly
+
+---
+
 ## Accessibility Quick Check
 
 - [ ] Tab navigation works

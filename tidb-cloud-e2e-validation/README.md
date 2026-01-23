@@ -20,12 +20,13 @@ tidb-cloud-e2e-validation/
 ├── README.md                          # This file
 ├── references/
 │   ├── cluster-management.md          # Cluster creation/management validation
+│   ├── project-management.md          # Project/org structure validation
 │   ├── navigation-patterns.md         # Common UI navigation patterns
-│   ├── ticdc-validation.md            # TiCDC-specific validation (TODO)
-│   └── backup-restore.md              # Backup/restore validation (TODO)
-└── assets/
-    ├── report-template.md             # Validation report template
-    └── checklist-template.md          # Quick validation checklist
+│   └── ui-visual-checklist.md         # Visual/layout issues checklist (IMPORTANT)
+├── assets/
+│   ├── report-template.md             # Validation report template
+│   └── checklist-template.md          # Quick validation checklist
+└── reports/                           # Generated validation reports
 ```
 
 ## Usage
@@ -40,9 +41,6 @@ tidb-cloud-e2e-validation/
 ```
 # Validate cluster creation as a new user
 "Validate the cluster creation flow using the Happy Path persona"
-
-# Test TiCDC setup as a power user
-"Test TiCDC changefeed creation from a Power User perspective"
 
 # Full validation with both personas
 "Do a complete validation of [feature] with both personas"
@@ -71,6 +69,20 @@ All features are scored on 6 dimensions (1-5 scale):
 | Feedback | Does the UI communicate state clearly? |
 | Error Handling | Does the UI help users recover from errors? |
 | Consistency | Does the UI match other parts of the console? |
+
+## Visual & Layout Checks
+
+**IMPORTANT**: Every validation should include visual/layout checks from `references/ui-visual-checklist.md`:
+
+| Check Category | Common Issues |
+|----------------|---------------|
+| Element Overlapping | Help icons covering buttons, tooltips cut off |
+| Interaction States | Selected+hover thick borders, incorrect disabled colors |
+| Cross-Page Consistency | Colors differ between list/create pages, dropdown menu inconsistency |
+| Empty/Edge States | Pagination on empty tables, long text breaking layouts |
+| Platform Issues | Double scroll bars on Windows Chrome |
+
+These visual issues are often missed but significantly impact user experience.
 
 ## Output
 

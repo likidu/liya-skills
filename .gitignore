@@ -124,3 +124,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Claude Code skills (local testing)
+.claude/skills/

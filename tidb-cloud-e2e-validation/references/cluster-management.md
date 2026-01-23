@@ -45,8 +45,9 @@ Cluster management includes:
 4. **Review & Create**
    - [ ] Summary shows what will be created
    - [ ] Cost estimate visible (if applicable)
-   - [ ] Create button is prominent
+   - [ ] Create button is prominent and **not overlapped by other elements**
    - [ ] Cancel/back navigation works
+   - [ ] **Check floating help icon doesn't overlap Create/Cancel buttons**
 
 5. **Post-Creation**
    - [ ] Clear feedback that creation started
@@ -177,6 +178,59 @@ When validating cluster creation, the report should include:
 
 ---
 
+## Cluster List Page Validation
+
+The cluster list page (My TiDB) has its own set of checks:
+
+### Visual Consistency
+- [ ] **Plan colors match** between list page badges and creation page cards
+- [ ] **Status colors** are consistent (Active, Modifying, etc.)
+- [ ] **Column alignment** is consistent
+
+### Dropdown Menu Actions
+- [ ] **Action menus** are consistent across different plan types
+- [ ] Premium actions: Rename, Import, Delete, Get Support
+- [ ] Essential actions: Should match Premium where applicable
+- [ ] Starter actions: May have fewer options (no Import)
+- [ ] **Disabled actions** show tooltip explaining why
+
+### Filtering & Sorting
+- [ ] Filters work correctly (by Plan, Region, Status, Project)
+- [ ] Clear Filter button works
+- [ ] Refresh button actually refreshes the data (not just cached)
+- [ ] **Empty table** doesn't show pagination
+
+### Create Resource Menu
+- [ ] "Restore from Cloud Storage" shows warning if not supported for plan
+- [ ] "Restore from Another Plan" shows warning if not supported
+- [ ] Menu item names are complete (not truncated)
+
+---
+
+## Cross-Page Consistency Checks
+
+**IMPORTANT**: When validating cluster features, always check consistency across these pages:
+
+### Color Consistency
+| Element | Creation Page | List Page | Should Match? |
+|---------|---------------|-----------|---------------|
+| Starter badge/card | Pink | Pink | Yes |
+| Essential badge/card | Blue | Blue | Yes |
+| Premium badge/card | Purple | Purple | Yes |
+| Dedicated badge/card | Gray | Gray | Yes |
+
+### Feature Availability by Plan
+| Feature | Starter | Essential | Premium | Dedicated |
+|---------|---------|-----------|---------|-----------|
+| Restore from Cloud Storage | No | No | Yes | Yes |
+| Restore from Another Plan | No | No | Yes | Yes |
+| High Availability options | No | Yes | Yes | Yes |
+| Advanced encryption | With spending limit | Yes | Yes | Yes |
+
+**Note**: If a feature is shown but not available for a plan, there must be a clear indication (tooltip, message, or visual disabled state).
+
+---
+
 ## Common Issues to Watch For
 
 | Issue | Severity | Description |
@@ -186,3 +240,10 @@ When validating cluster creation, the report should include:
 | Poor progress feedback | Medium | Users unsure if creation is working |
 | Confusing region names | Low | Technical region codes vs friendly names |
 | Status lag | Medium | UI shows wrong status temporarily |
+| **Help icon overlaps Create button** | High | Floating elements cover action buttons |
+| **Plan colors inconsistent** | Medium | Colors differ between list and creation pages |
+| **Selected+hover thick border** | Medium | Visual glitch when hovering selected card |
+| **Dropdown menu inconsistency** | Medium | Different plans have inconsistent menus |
+| **Empty table shows pagination** | Low | Pagination visible when no data |
+| **Restore options confuse non-Premium users** | High | Options shown but not available |
+| **Disabled tier no explanation** | High | Dedicated tier grayed out with no tooltip |
