@@ -66,3 +66,8 @@ When the user adds inline comments to a plan, follow this protocol:
 4. **Explain Changes**: High-level summary at each step
 5. **Document Results**: Add review section to `tasks/plan.md`
 6. **Capture Lessons**: Update `tasks/lessons.md` after corrections
+
+## gstack
+Use /browse from gstack for all web browsing. Never use mcp__claude-in-chrome__* tools.
+
+Available skills: /office-hours, /plan-ceo-review, /plan-eng-review, /plan-design-review, /design-consultation, /review, /ship, /land-and-deploy, /canary, /benchmark, /browse, /qa, /qa-only, /design-review, /setup-browser-cookies, /setup-deploy, /retro, /investigate, /document-release, /codex, /cso, /autoplan, /careful, /freeze, /guard, /unfreeze, /gstack-upgrade.
