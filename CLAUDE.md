@@ -1,3 +1,11 @@
+## Precedence
+
+When guidance conflicts, resolve in this order:
+
+1. **Coding Principles (below)** — Andrej Karpathy's four rules always apply, regardless of framework.
+2. **Framework / skill-suite flow** — if work is driven by gstack, superpower, or a similar suite, follow its prescribed flow next.
+3. **The rest of this document** — planning, review, orchestration, and task-management conventions apply where the above two are silent.
+
 ## Coding Principles
 
 Behavioral guardrails to reduce common LLM coding mistakes. Bias toward caution over speed; for trivial tasks, use judgment.
