@@ -117,6 +117,32 @@ Use /browse from gstack for all web browsing. Never use mcp__claude-in-chrome__*
 
 Available skills: /office-hours, /plan-ceo-review, /plan-eng-review, /plan-design-review, /design-consultation, /review, /ship, /land-and-deploy, /canary, /benchmark, /browse, /qa, /qa-only, /design-review, /setup-browser-cookies, /setup-deploy, /retro, /investigate, /document-release, /codex, /cso, /autoplan, /careful, /freeze, /guard, /unfreeze, /gstack-upgrade.
 
+## Google Workspace links
+
+When a file or message references a Google Workspace URL, extract the resource
+ID from the path and use the `gws` CLI to fetch contents directly — don't ask
+the user to paste the contents.
+
+### Google Docs
+
+URL form: `https://docs.google.com/document/d/{ID}/edit...`
+
+Command: `gws docs documents get --params '{"documentId": "..."}'`
+
+The response is structured JSON. Flatten
+`body.content[].paragraph.elements[].textRun.content` to plain text before
+summarizing — don't dump raw JSON unless asked.
+
+### Google Slides
+
+URL form: `https://docs.google.com/presentation/d/{ID}/edit...`
+
+Command: `gws slides presentations get --params '{"presentationId": "..."}'`
+
+The response is structured JSON. Flatten
+`slides[].pageElements[].shape.text.textElements[].textRun.content` to plain
+text before summarizing — don't dump raw JSON unless asked.
+
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
